@@ -1,54 +1,327 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <style>
-  body {
-    background-color: #000000;
-    color: #00ff00;
-    font-family: 'Courier New', monospace;
-  }
-  h1, h2, h3, h4, p {
-    margin: 0.5em 0;
-  }
-  #perfil, #habilidades, #experiencia, #educacion {
-    border: 2px solid #00ff00;
-    margin: 1em 0;
-    padding: 1em;
-  }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Victor Miguel Barrera Peña</title>
+    <style>
+        /* Reset básico y estilos globales */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000000; /* Fondo negro */
+            color: #CCFFEE; /* Color de texto principal (verde pálido) */
+            font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada */
+            line-height: 1.6;
+            padding: 30px;
+        }
+
+        /* Contenedor principal del CV */
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid #1a1a1a; /* Borde sutil si se desea, opcional */
+            padding: 25px;
+        }
+
+        /* Encabezado (Título y icono) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #66FFCC; /* Línea inferior verde neón */
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            color: #66FFCC; /* Verde neón */
+            font-size: 1.8em; /* Ajustado para nombre largo */
+            font-weight: normal;
+        }
+
+        /* Estilos para el icono de perfil */
+        .profile-icon {
+            width: 70px;
+            height: 70px;
+            border: 3px solid #66FFCC; /* Borde circular verde neón */
+            border-radius: 50%;
+            position: relative;
+            display: flex; /* Para centrar si fuera necesario */
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0; /* Evita que se encoja */
+            /* background-color: #111; Opcional: si quieres fondo dentro del círculo */
+        }
+
+        /* Dibujo del icono de perfil con pseudo-elementos */
+        .profile-icon::before,
+        .profile-icon::after {
+            content: '';
+            position: absolute;
+            background-color: #66FFCC; /* Color del icono */
+        }
+
+        /* Cabeza */
+        .profile-icon::before {
+            width: 25px; /* 35% aprox */
+            height: 25px;
+            border-radius: 50%;
+            top: 12px; /* Ajustar posición */
+        }
+
+        /* Cuerpo */
+        .profile-icon::after {
+            width: 40px; /* 60% aprox */
+            height: 20px; /* 30% aprox */
+            border-radius: 10px 10px 0 0; /* Hombros redondeados */
+            top: 40px; /* Ajustar posición */
+        }
+
+
+        /* Contenido principal (dos columnas) */
+        .main-content {
+            display: flex;
+            gap: 30px; /* Espacio entre columnas */
+        }
+
+        /* Columna izquierda (más ancha) */
+        .left-column {
+            flex: 2; /* Ocupa 2/3 del espacio */
+        }
+
+        /* Columna derecha (más estrecha) */
+        .right-column {
+            flex: 1; /* Ocupa 1/3 del espacio */
+        }
+
+        /* Estilo común para secciones */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #66FFCC; /* Verde neón */
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #338066; /* Línea sutil bajo títulos */
+            font-weight: normal;
+        }
+
+        .section p, .section ul, .section li {
+            margin-bottom: 12px;
+            color: #AAEEDD; /* Un verde ligeramente más pálido para el texto */
+            font-size: 0.95em;
+        }
+        .section ul {
+            list-style: none; /* Quitar puntos de lista */
+            padding-left: 0;
+        }
+        .section li::before { /* Simular viñeta de terminal */
+            content: "> ";
+            color: #66FFCC; /* Verde neón para la viñeta */
+            padding-right: 5px;
+        }
+        .job-title, .project-title {
+            color: #ffffff; /* Blanco para títulos de trabajo/proyecto */
+            font-weight: bold;
+            display: block; /* Asegura que esté en su propia línea */
+            margin-bottom: 5px;
+        }
+        .company-date {
+            color: #88ddcc; /* Verde más tenue para compañía y fechas */
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+
+        /* Estilos específicos para la sección de Habilidades */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; /* Espacio entre habilidades */
+        }
+        .skill-tag {
+            background-color: #1a1a1a; /* Fondo gris oscuro */
+            color: #66FFCC; /* Texto verde neón */
+            border: 1px solid #338066; /* Borde verde sutil */
+            padding: 5px 10px;
+            border-radius: 5px; /* Bordes ligeramente redondeados */
+            font-size: 0.9em;
+            white-space: nowrap; /* Evita que se parta la etiqueta */
+        }
+
+        /* Estilos para enlaces */
+        a {
+            color: #66FFCC; /* Verde neón */
+            text-decoration: none;
+            word-break: break-all; /* Para que URLs largas no rompan el layout */
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #ffffff; /* Blanco al pasar el ratón */
+        }
+
+        /* Pequeños ajustes responsivos (opcional) */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column; /* Apila las columnas en pantallas pequeñas */
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            header h1 {
+                margin-bottom: 15px;
+                font-size: 1.6em; /* Ajustar tamaño en móvil */
+            }
+            .profile-icon {
+                align-self: center; /* Centra el icono cuando está en columna */
+                 margin-top: 10px;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <h1>Víctor Miguel Barrera Peña</h1>
-  <p>Desarrollador de Python | Experto en HTML y CSS</p>
-  <p>Ciudad de México, México | 1234-5678-9000 | victor.miguel.barrera.pena@gmail</p>
-  <p>github.com/juanperez | linkedin.com/in/juanperez</p>
 
-  <div id="perfil">
-    <h2>PERFIL PROFESIONAL</h2>
-    <p>Programador de Python con 5 años de experiencia... obsesionado con el futuro de la tecnología.</p>
-  </div>
+    <div class="cv-container">
+        <header>
+            <h1>Victor Miguel Barrera Peña</h1>
+            <div class="profile-icon">
+                <!-- El icono se dibuja con CSS (::before y ::after) -->
+            </div>
+        </header>
 
-  <div id="habilidades">
-    <h2>HABILIDADES TÉCNICAS</h2>
-    <p>Lenguajes de programación: Python, JavaScript</p>
-    <!-- Más habilidades aquí -->
-  </div>
+        <main class="main-content">
+            <section class="left-column">
 
-  <div id="experiencia">
-    <h2>EXPERIENCIA LABORAL</h2>
-    <h3>Desarrollador de Software, Cybernetics Corp</h3>
-    <p>Ciudad de México, México | Jun 2021 - Presente</p>
-    <p>Lideré el desarrollo de una aplicación web en Python...</p>
-    <!-- Más experiencia aquí -->
-  </div>
+                <div class="section">
+                    <h2>Resumen Profesional</h2>
+                    <p>
+                        Desarrollador Full Stack con 2 años de experiencia en desarrollo full stack,
+                        interesado en inteligencia artificial y en crear interfaces funcionales, interesantes y
+                        satisfactorias.
+                    </p>
+                </div>
 
-  <div id="educacion">
-    <h2>EDUCACIÓN</h2>
-    <h3>Licenciatura en Ingeniería en Computación, Facultad de Ingeniería UNAM,CU</h3>
-    <p>Ciudad de México, México | Graduado en 223</p>
-  </div>
+                <div class="section">
+                    <h2>Experiencia Laboral</h2>
+                    <div>
+                        <span class="job-title">Python Developer A.I</span>
+                        <span class="company-date">Mar Systems-IT (Enero 2025 - Actualidad)</span>
+                        <p>
+                            Creación de Sistema de IA reconocimiento de audio de armas de fuego y eventos (SAMDIA).
+                        </p>
+                    </div>
+                     <hr style="border-color: #338066; margin: 15px 0;">
+                    <div>
+                    <div>
+                        <span class="job-title">Full Stack Developer</span>
+                        <span class="company-date">Mar Systems-IT (Junio 2024 - Diciembre 2024 )</span>
+                        <p>
+                            Desarrollo y mantenimiento de aplicaciones web utilizando C# y TypeScript.
+                        </p>
+                    </div>
+                     <hr style="border-color: #338066; margin: 15px 0;">
+                    <div>
+                        <span class="job-title">Full Stack Web</span>
+                        <span class="company-date">Gesteamworks (2022 - 2024)</span>
+                        <p>
+                            Actualizar sistemas PHP, crear nuevos sistemas, y ofrecer consultoría para implementaciones en Python.
+                        </p>
+                    </div>
+                     <hr style="border-color: #338066; margin: 15px 0;">
+                     <div>
+                        <span class="job-title">Full Stack Web</span>
+                        <span class="company-date">Inmersys (2021 - 2022)</span>
+                        <p>
+                            Actualizar y diseñar sistemas web Nest-Js y Vue-Js.
+                        </p>
+                    </div>
+                </div>
 
-  <p>REFERENCIAS</p>
-  <p>Disponibles a petición.</p>
+                <div class="section">
+                    <h2>Proyectos Relevantes</h2>
+                     <div>
+                        <span class="project-title">Sistema de Administración Consultora (Actual)</span>
+                        <p>
+                            Desarrollo y mantenimiento de un sistema de administración para una consultora, implementado en Python y tecnologías web modernas.
+                        </p>
+                    </div>
+                     <hr style="border-color: #338066; margin: 15px 0;">
+                    <div>
+                        <span class="project-title">Asistencia por Reconocimiento Facial</span>
+                        <p>
+                            Aplicación en Python utilizando OpenCV y Kivy para reconocimiento facial, orientado a mejorar la seguridad y asistencia en empresas.
+                        </p>
+                    </div>
+                     <hr style="border-color: #338066; margin: 15px 0;">
+                    <div>
+                        <span class="project-title">Traductor en Tiempo Real Seamless Meta</span>
+                        <p>
+                            Proyecto de traducción en tiempo real usando Python y modelos LLM y CNN, enfocado en la implementación de soluciones multilingües.
+                        </p>
+                    </div>
+                     <hr style="border-color: #338066; margin: 15px 0;">
+                    <div>
+                        <span class="project-title">Resume Builder (Constructor de CV Automáticos)</span>
+                        <p>
+                            Herramienta desarrollada en Python, JavaScript y HTML para la creación automática de CVs, utilizando ComfyUI y PDFKit.
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+
+            <aside class="right-column">
+                <div class="section">
+                     <h2>Contacto</h2>
+                     <p>Tel: 55-1792-9695</p>
+                     <p>Email: <a href="mailto:vaitor_victor@hotmail.com">vaitor_victor@hotmail.com</a></p>
+                     <p>GitHub: <a href="https://github.com/EzioFenix" target="_blank">github.com/EzioFenix</a></p>
+                     <p>LinkedIn: <a href="https://www.linkedin.com/in/victor-barrera-pe%C3%B1a-088900123/" target="_blank">linkedin.com/in/victor-barrera-peña-088900123</a></p>
+                 </div>
+
+                <div class="section">
+                    <h2>Habilidades Técnicas</h2>
+                    <div class="skills-container">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Angular.js</span>
+                        <!-- Agrega más habilidades si es necesario -->
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Educación</h2>
+                     <span class="job-title">Ingeniería en Computación</span>
+                     <span class="company-date">Universidad Nacional Autónoma de México C.U. (2019-2024)</span>
+                </div>
+
+                <div class="section">
+                    <h2>Certificaciones y Cursos</h2>
+                    <ul>
+                       <li>Inglés B2, Centro de Idiomas C.U.</li>
+                       <li>Principios SOLID y Clean Code</li>
+                       <li>TypeScript: Tu completa guía y manual de mano</li>
+                       <li>+ 263 cursos completados en programación, patrones de diseño, y UI/UX</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+    </div>
+
 </body>
 </html>
