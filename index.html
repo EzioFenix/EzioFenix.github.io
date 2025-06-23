@@ -1,332 +1,281 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Victor Miguel Barrera Peña</title>
+    <title>Víctor Miguel Barrera Peña - Resume</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
+        :root {
+            --color-texto-principal: #333333;
+            --color-texto-secundario: #7F7F7F;
+            --color-borde: #EAEAEA;
+            --color-google-blue: #4285F4;
+            --color-google-red: #DB4437;
+            --color-google-yellow: #F4B400;
+            --color-google-green: #0F9D58;
+            --color-card-text-light: #FFFFFF;
+            --color-card-text-dark: #333333;
+            --icon-circle-size: 32px; /* Tamaño del círculo de fondo del icono */
+            --icon-itself-size: 20px; /* Tamaño del icono dentro del círculo */
+        }
 
-        * {
-            box-sizing: border-box;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #F8F9FA;
+            color: var(--color-texto-principal);
+            line-height: 1.6;
             margin: 0;
             padding: 0;
         }
 
-        body {
-            background-color: #000000;
-            color: #CCFFEE;
-            font-family: 'Courier New', Courier, monospace;
-            line-height: 1.6;
-            padding: 30px;
+        .resume-container {
+            max-width: 850px;
+            margin: 40px auto;
+            background-color: #FFFFFF;
+            padding: 40px 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
         }
 
-
-        .cv-container {
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid #1a1a1a;
-            padding: 25px;
+        .header {
+            text-align: left;
+            margin-bottom: 30px;
         }
 
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #66FFCC;
-            margin-bottom: 25px;
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin: 0;
         }
+        .g-blue { color: var(--color-google-blue); }
+        .g-red { color: var(--color-google-red); }
+        .g-yellow { color: var(--color-google-yellow); }
+        .g-green { color: var(--color-google-green); }
 
-        header h1 {
-            color: #66FFCC;
-            font-size: 1.8em;
-            font-weight: normal;
-        }
-
-
-        .profile-icon {
-            width: 70px;
-            height: 70px;
-            border: 3px solid #66FFCC;
-            border-radius: 50%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-
-        }
-
-
-        .profile-icon::before,
-        .profile-icon::after {
-            content: '';
-            position: absolute;
-            background-color: #66FFCC;
-        }
-
-
-        .profile-icon::before {
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            top: 12px;
-        }
-
-
-        .profile-icon::after {
-            width: 40px;
-            height: 20px;
-            border-radius: 10px 10px 0 0;
-            top: 40px;
-        }
-
-
-
-        .main-content {
-            display: flex;
-            gap: 30px;
-        }
-
-
-        .left-column {
-            flex: 2;
-        }
-
-
-        .right-column {
-            flex: 1;
-        }
-
-
-        .section {
-            margin-bottom: 25px;
-        }
-
-        .section h2 {
-            color: #66FFCC;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #338066;
-            font-weight: normal;
-        }
-
-        .section p, .section ul, .section li {
-            margin-bottom: 12px;
-            color: #AAEEDD;
-            font-size: 0.95em;
-        }
-        .section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .section li::before {
-            content: "> ";
-            color: #66FFCC;
-            padding-right: 5px;
-        }
-        .job-title, .project-title {
-            color: #ffffff;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .company-date {
-            color: #88ddcc;
-            display: block;
-            margin-bottom: 8px;
+        .header .contact-info {
             font-size: 0.9em;
-        }
-
-
-
-        .skills-container {
+            color: var(--color-texto-secundario);
+            margin-top: 15px;
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-        }
-        .skill-tag {
-            background-color: #1a1a1a;
-            color: #66FFCC;
-            border: 1px solid #338066;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9em;
-            white-space: nowrap;
+            gap: 10px 20px; /* Ajuste de gap */
         }
 
-
-        a {
-            color: #66FFCC;
+        .header .contact-info span,
+        .header .contact-info a {
+            color: var(--color-texto-secundario);
             text-decoration: none;
-            word-break: break-all;
+            display: inline-flex;
+            align-items: center;
         }
-
-        a:hover {
+        .header .contact-info a:hover {
+            color: var(--color-google-blue); 
             text-decoration: underline;
-            color: #ffffff;
+        }
+        .header .contact-info a:hover .icon-background { /* Efecto hover en el círculo si se desea */
+            transform: scale(1.1);
         }
 
-
-        @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-            }
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            header h1 {
-                margin-bottom: 15px;
-                font-size: 1.6em;
-            }
-            .profile-icon {
-                align-self: center;
-                 margin-top: 10px;
-            }
+        /* Contenedor circular para el icono */
+        .icon-background {
+            width: var(--icon-circle-size);
+            height: var(--icon-circle-size);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px; /* Espacio entre el círculo y el texto */
+            transition: transform 0.2s ease-in-out; /* Para el hover */
         }
 
+        /* Icono de Material dentro del círculo */
+        .icon-background .material-icons {
+            color: var(--color-card-text-light); /* Icono blanco */
+            font-size: var(--icon-itself-size); /* Tamaño del icono en sí */
+            /* No necesita margin-right aquí */
+        }
+
+        /* Clases de color para el fondo del círculo del icono */
+        .icon-bg-g-blue { background-color: var(--color-google-blue); }
+        .icon-bg-g-red { background-color: var(--color-google-red); }
+        .icon-bg-g-yellow { background-color: var(--color-google-yellow); }
+        .icon-bg-g-green { background-color: var(--color-google-green); }
+
+        hr.divider {
+            border: 0;
+            height: 1px;
+            background-color: var(--color-borde);
+            margin: 20px 0;
+        }
+
+        .section { margin-bottom: 30px; }
+        .section h2 {
+            font-size: 1.4em;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+        }
+        .title-education { background-color: var(--color-google-blue); color: var(--color-card-text-light); }
+        .title-experience { background-color: var(--color-google-red); color: var(--color-card-text-light); }
+        .title-skills { background-color: var(--color-google-yellow); color: var(--color-card-text-dark); }
+
+        .entry { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+        .entry-left { flex-grow: 1; }
+        .entry-left strong { font-size: 1.1em; }
+        .entry-left em { font-style: italic; color: var(--color-texto-secundario); }
+        .entry-right { text-align: right; color: var(--color-texto-secundario); font-size: 0.9em; flex-shrink: 0; padding-left: 20px; }
+        .note { font-size: 0.85em; color: var(--color-texto-secundario); }
+
+        .bullet-list { list-style: none; padding-left: 0; margin-top: 5px; margin-bottom: 20px; }
+        .bullet-list li { position: relative; padding-left: 25px; margin-bottom: 8px; }
+        .bullet-list li::before { content: ''; position: absolute; left: 5px; top: 9px; height: 8px; width: 8px; border-radius: 50%; }
+        .section-education .bullet-list li::before { background-color: var(--color-google-blue); }
+        .section-experience .bullet-list li::before { background-color: var(--color-google-red); }
+        .skills-list strong { display: inline-block; min-width: 110px; }
     </style>
 </head>
 <body>
-
-    <div class="cv-container">
-        <header>
-            <h1>Victor Miguel Barrera Peña</h1>
-            <div class="profile-icon">
+    <div class="resume-container">
+        <header class="header">
+            <h1>
+                <span class="g-blue">V</span><span class="g-red">í</span><span class="g-yellow">c</span><span class="g-green">t</span><span class="g-blue">o</span><span class="g-red">r</span>
+                <span> </span>
+                <span class="g-yellow">M</span><span class="g-green">i</span><span class="g-blue">g</span><span class="g-red">u</span><span class="g-yellow">e</span><span class="g-green">l</span>
+                <span> </span>
+                <span class="g-blue">B</span><span class="g-red">a</span><span class="g-yellow">r</span><span class="g-green">r</span><span class="g-blue">e</span><span class="g-red">r</span><span class="g-yellow">a</span>
+                <span> </span>
+                <span class="g-green">P</span><span class="g-blue">e</span><span class="g-red">ñ</span><span class="g-yellow">a</span>
+            </h1>
+            <hr class="divider">
+            <div class="contact-info">
+                <span>
+                    <span class="icon-background icon-bg-g-blue">
+                        <i class="material-icons">location_on</i>
+                    </span>
+                    México, Naucalpan, 53660
+                </span>
+                <a href="mailto:tareas.victor.miguel.barrera.pena@gmail.com">
+                    <span class="icon-background icon-bg-g-red">
+                        <i class="material-icons">email</i>
+                    </span>
+                    tareas.victor.miguel.barrera.pena@gmail.com
+                </a>
+                <a href="https://wa.me/525517929695" target="_blank">
+                    <span class="icon-background icon-bg-g-yellow">
+                        <i class="material-icons">phone</i>
+                    </span>
+                    (+52) 55 1792 9695
+                </a>
+                <a href="https://github.com/EzioFenix" target="_blank"> EzioFenix
+                    <span class="icon-background icon-bg-g-green">
+                        <i class="material-icons">code</i>
+                    </span>
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/victor-barrera-pe%C3%B1a-088900123/" target="_blank"> Victor Miguel Barrera Peña
+                    <span class="icon-background icon-bg-g-blue"> 
+                        <i class="material-icons">group</i>
+                    </span>
+                    LinkedIn
+                </a>
             </div>
         </header>
 
-        <main class="main-content">
-            <section class="left-column">
-
-                <div class="section">
-                    <h2>Resumen Profesional</h2>
-                    <p>
-                        Desarrollador Full Stack con +2 años de experiencia en desarrollo full stack,
-                        inteligencia artificial y en crear interfaces funcionales, interesantes y
-                        satisfactorias.
-                    </p>
+        <section class="section section-education">
+            <h2 class="title-education">Education</h2>
+            <div class="entry">
+                <div class="entry-left">
+                    <strong>The National Autonomous University of México (UNAM)</strong><br>
+                    <em>Computational Engineering</em> <span class="note"></span><br>
+                    <span class="note">Relevant courses: Image Recognition, Machine Learning, Natural Language Processing, Distributed Systems</span>
                 </div>
-
-                <div class="section">
-                    <h2>Experiencia Laboral</h2>
-                    <div>
-                        <span class="job-title">Python Developer A.I</span>
-                        <span class="company-date">Mathieson EL CO S.A. DE C.V. (Enero 2025 - Actualidad)</span>
-                        <p>
-                            Creación de Sistema de IA reconocimiento de audio de armas de fuego y eventos (SAMDIA).
-                        </p>
-                    </div>
-                     <hr style="border-color: #338066; margin: 15px 0;">
-                    <div>
-                    <div>
-                        <span class="job-title">Full Stack Developer</span>
-                        <span class="company-date">Mar Systems-IT (Junio 2024 - Diciembre 2024 )</span>
-                        <p>
-                            Desarrollo y mantenimiento de aplicaciones web utilizando C# y TypeScript.
-                        </p>
-                    </div>
-                     <hr style="border-color: #338066; margin: 15px 0;">
-                    <div>
-                        <span class="job-title">Full Stack Web</span>
-                        <span class="company-date">Gesteamworks (2022 - 2024)</span>
-                        <p>
-                            Actualizar sistemas PHP, crear nuevos sistemas, y ofrecer consultoría para implementaciones en Python.
-                        </p>
-                    </div>
-                     <hr style="border-color: #338066; margin: 15px 0;">
-                     <div>
-                        <span class="job-title">Full Stack Web</span>
-                        <span class="company-date">Inmersys (2021 - 2022)</span>
-                        <p>
-                            Actualizar y diseñar sistemas web Nest-Js y Vue-Js.
-                        </p>
-                    </div>
+                <div class="entry-right">
+                    CU, México City<br>
+                    Graduation: August 2024
                 </div>
-
-                <div class="section">
-                    <h2>Proyectos Relevantes</h2>
-                    <div>
-                        <span class="project-title">Sistema de reconocimiento de armas de fuego</span>
-                        <p>
-                            Creación de una inteligencia artificial que identifique armas de fuego mediante el uso de técnicas avanzadas de visión artificial y aprendizaje automático.
-                        </p>
-                    </div>
-                     <div>
-                        <span class="project-title">Sistema de Administración Consultora</span>
-                        <p>
-                            Desarrollo y mantenimiento de un sistema de administración para una consultora, implementado en Python y tecnologías web modernas.
-                        </p>
-                    </div>
-                     <hr style="border-color: #338066; margin: 15px 0;">
-                    <div>
-                        <span class="project-title">Asistencia por Reconocimiento Facial</span>
-                        <p>
-                            Aplicación en Python utilizando OpenCV y Kivy para reconocimiento facial, orientado a mejorar la seguridad y asistencia en empresas.
-                        </p>
-                    </div>
-                     <hr style="border-color: #338066; margin: 15px 0;">
-                    <div>
-                        <span class="project-title">Traductor en Tiempo Real Seamless Meta</span>
-                        <p>
-                            Proyecto de traducción en tiempo real usando Python y modelos LLM y CNN, enfocado en la implementación de soluciones multilingües.
-                        </p>
-                    </div>
-                     <hr style="border-color: #338066; margin: 15px 0;">
-                    <div>
-                        <span class="project-title">Resume Builder (Constructor de CV Automáticos)</span>
-                        <p>
-                            Herramienta desarrollada en Python, JavaScript y HTML para la creación automática de CVs, utilizando ComfyUI y PDFKit.
-                        </p>
-                    </div>
+            </div>
+            <div class="entry">
+                <div class="entry-left">
+                    <strong>Courses Taken</strong> <span class="note"></span><br>
+                    <em>+300 courses completed. Latest: iOS App Development with Swift 2025</em>
                 </div>
-
-            </section>
-
-            <aside class="right-column">
-                <div class="section">
-                     <h2>Contacto</h2>
-                     <p>Tel: 55-1792-9695</p>
-                     <p>Email: <a href="mailto:vaitor_victor@hotmail.com">vaitor_victor@hotmail.com</a></p>
-                     <p>GitHub: <a href="https://github.com/EzioFenix" target="_blank">github.com/EzioFenix</a></p>
-                     <p>LinkedIn: <a href="https://www.linkedin.com/in/victor-barrera-pe%C3%B1a-088900123/" target="_blank">linkedin.com/in/victor-barrera-peña-088900123</a></p>
-                 </div>
-
-                <div class="section">
-                    <h2>Habilidades Técnicas</h2>
-                    <div class="skills-container">
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">NestJS</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">Angular.js</span>
-
-                    </div>
+                <div class="entry-right">
+                    Udemy, Platzi, Coursera
                 </div>
+            </div>
+        </section>
 
-                <div class="section">
-                    <h2>Educación</h2>
-                     <span class="job-title">Ingeniería en Computación</span>
-                     <span class="company-date">Universidad Nacional Autónoma de México C.U. (2019-2024)</span>
+        <section class="section section-experience">
+            <h2 class="title-experience">Experience</h2>
+            <div class="entry">
+                <div class="entry-left">
+                    <strong>Mathieson EL CO S.A. DE C.V.</strong><br>
+                    <em>AI Python Developer</em>
                 </div>
+                <div class="entry-right">
+                    Mexico City<br>
+                    January 2025 – Present
+                </div>
+            </div>
+            <ul class="bullet-list">
+                <li>Developed an AI system for audio recognition of firearms and events in real-time (SAMDIA).</li>
+                <li>Built and designed servers for AI development and testing.</li>
+            </ul>
+            <div class="entry">
+                <div class="entry-left">
+                    <strong>Mar Systems-IT</strong><br>
+                    <em>Full Stack Developer</em>
+                </div>
+                <div class="entry-right">
+                    Mexico City<br>
+                    June 2024 – December 2024
+                </div>
+            </div>
+            <ul class="bullet-list">
+                <li>Developed and maintained web applications using C# and TypeScript.</li>
+            </ul>
+            <div class="entry">
+                <div class="entry-left">
+                    <strong>Gesteamworks</strong><br>
+                    <em>Full Stack Web Developer</em>
+                </div>
+                <div class="entry-right">
+                    Remote/Mexico City<br> 
+                    2022 – January 2024
+                </div>
+            </div>
+            <ul class="bullet-list">
+                <li>Updated legacy PHP systems.</li>
+                <li>Developed new web systems.</li>
+                <li>Engineered a real-time AI face detection system.</li>
+                <li>Provided consultancy for Python-based implementations.</li>
+            </ul>
+            <div class="entry">
+                <div class="entry-left">
+                    <strong>Inmersys</strong><br>
+                    <em>Full Stack Web Developer</em>
+                </div>
+                <div class="entry-right">
+                    Remote/Mexico City<br> 
+                    2021 – 2022
+                </div>
+            </div>
+            <ul class="bullet-list">
+                <li>Updated and designed web systems using NestJS and Vue.js.</li>
+            </ul>
+        </section>
 
-                <div class="section">
-                    <h2>Certificaciones y Cursos</h2>
-                    <ul>
-                       <li>Inglés B2, Centro de Idiomas C.U.</li>
-                       <li>Principios SOLID y Clean Code</li>
-                       <li>TypeScript: Tu completa guía y manual de mano</li>
-                       <li>+ 263 cursos completados en programación, patrones de diseño, y UI/UX</li>
-                    </ul>
-                </div>
-            </aside>
-        </main>
+        <section class="section section-skills">
+            <h2 class="title-skills">Skills & Interests</h2>
+            <div class="skills-list">
+                <p><strong>Technical:</strong> Git, Python (TensorFlow, Keras, PyTorch, Pandas...), TypeScript, JavaScript, Node.js, Java,HTML,CSS Angular.js, Vue.js, Flutter, Swift</p>
+                <p><strong>Languages:</strong> English (Upper-Intermediate), Spanish (Native)</p>
+                <p><strong>Lab/Hardware:</strong> Server maintenance and construction.</p>
+            </div>
+        </section>
     </div>
-
 </body>
 </html>
